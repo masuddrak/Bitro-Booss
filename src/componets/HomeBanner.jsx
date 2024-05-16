@@ -8,7 +8,7 @@ import image6 from "../assets/home/05.png"
 import image5 from "../assets/home/06.png"
 const HomeBanner = () => {
     return (
-        <div className="max-h-[30vh]">
+        <div >
             <Carousel>
                 <div>
                     <img src={image1} />
