@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 const Nvaber = () => {
     const navoptions = <>
         <li><NavLink to="/">Home</NavLink></li>
+        <li><NavLink to="/menu">Menu</NavLink></li>
         <li><NavLink to="/about">Abou</NavLink></li>
     </>
     return (
