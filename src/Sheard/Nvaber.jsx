@@ -4,7 +4,8 @@ const Nvaber = () => {
     const navoptions = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/menu">Menu</NavLink></li>
-        <li><NavLink to="/about">Abou</NavLink></li>
+        <li><NavLink to="/orders">Orders</NavLink></li>
+        <li><NavLink to="/about">About</NavLink></li>
     </>
     return (
         <div className=''>

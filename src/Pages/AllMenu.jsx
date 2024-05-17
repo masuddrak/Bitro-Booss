@@ -2,6 +2,9 @@ import { Helmet } from "react-helmet";
 import Cover from "../componets/Cover";
 import ourMenuImage from "../assets/menu/banner3.jpg"
 import dessertImg from "../assets/menu/dessert-bg.jpeg"
+import pizzaImg from "../assets/menu/pizza-bg.jpg"
+import saladImg from "../assets/menu/salad-bg.jpg"
+import soupdImg from "../assets/menu/soup-bg.jpg"
 import MenuCategory from "../componets/MenuCategory";
 import useMenu from "../hooks/useMenu";
 import SectionTitel from "../componets/SectionTitel";
@@ -26,6 +29,15 @@ const AllMenu = () => {
             <MenuCategory items={offered}  ></MenuCategory>
             {/* dessert */}
             <MenuCategory items={dessert} image={dessertImg} titel={"Dessert"} subTitle="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."></MenuCategory>
+            {/*  */}
+            {/* pizza */}
+            <MenuCategory items={pizza} image={pizzaImg} titel={"Pzza"} subTitle="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."></MenuCategory>
+            {/*  */}
+            {/* salads */}
+            <MenuCategory items={salad} image={saladImg} titel={"salads"} subTitle="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."></MenuCategory>
+            {/*  */}
+            {/* soup */}
+            <MenuCategory items={soup} image={soupdImg} titel={"soup"} subTitle="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."></MenuCategory>
             {/*  */}
         </div>
     );
