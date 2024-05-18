@@ -1,8 +1,9 @@
+import { Link } from "react-router-dom";
 import Cover from "./Cover";
 import MenuItem from "./MenuItem";
 
 
-const MenuCategory = ({ items, image, titel,subTitle }) => {
+const MenuCategory = ({ items, image, titel, subTitle }) => {
     return (
         <div className="my-10">
             {titel && <Cover image={image} titel={titel} subTitle={subTitle}></Cover>}
@@ -10,6 +11,10 @@ const MenuCategory = ({ items, image, titel,subTitle }) => {
                 {
                     items.map(menuitem => <MenuItem key={menuitem._id} menuitem={menuitem}></MenuItem>)
                 }
+            </div>
+            <div className="flex justify-center">
+                <Link className="btn btn-outline btn-accent border-0 border-b-2  uppercase text-white" to={`/orders/${titel}`}>ORDER YOUR FAVOURITE FOOD</Link>
+
             </div>
         </div>
     );
