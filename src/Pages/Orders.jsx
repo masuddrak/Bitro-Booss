@@ -7,7 +7,7 @@ import OrderTab from "../componets/OrderTab";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 const Orders = () => {
-    const x=["soup","pizza",'salad',"dessert","drinks","offered"]
+    const x = ["soup", "pizza", 'salad', "dessert", "drinks", "offered"]
     const [menus, loading] = useMenu()
     const soup = menus.filter(item => item.category === "soup")
     const pizza = menus.filter(item => item.category === "pizza")
@@ -15,13 +15,13 @@ const Orders = () => {
     const dessert = menus.filter(item => item.category === "dessert")
     const drinks = menus.filter(item => item.category === "drinks")
     const offered = menus.filter(item => item.category === "offered")
-    const {category}=useParams()
+    const { category } = useParams()
     const [tabIndex, setTabIndex] = useState(x.indexOf(category.toLocaleLowerCase()));
 
     if (loading) {
         return <h1>Loading ..........</h1>
     }
-    console.log("my category",category)
+    console.log("my category", category)
     return (
         <section>
             <Cover image={orderBanner} titel={"OUR SHOP"} subTitle={"Would you like to try a dish?"}></Cover>

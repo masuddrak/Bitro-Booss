@@ -1,14 +1,16 @@
 
 import Nvaber from '../Sheard/Nvaber';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import Footer from '../Sheard/Footer';
 
 const MainLayout = () => {
+    const location=useLocation()
+    console.log(location.pathname)
     return (
         <div className='container mx-auto'>
-            <Nvaber></Nvaber>
+            {location.pathname=="/login" || <Nvaber></Nvaber>}
             <Outlet></Outlet>
-            <Footer></Footer>
+            {location.pathname=="/login" || <Footer></Footer>}
         </div>
     );
 };
