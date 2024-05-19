@@ -1,16 +1,34 @@
+import { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { AuthContext } from '../Provider/AuthProvider';
+import { FaShoppingCart } from "react-icons/fa";
 
-const Nvaber = () => {
+const Navber = () => {
+    const { user, logOut } = useContext(AuthContext)
     const navoptions = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/menu">Menu</NavLink></li>
-        <li><NavLink to="/orders/category">Orders</NavLink></li>
-        <li><NavLink to="/login">Login</NavLink></li>
+        <li><NavLink to="/orders/soup">Orders</NavLink></li>
         <li><NavLink to="/about">About</NavLink></li>
+
+        <li><NavLink to="/card">
+            <FaShoppingCart></FaShoppingCart>
+            <div className="badge badge-secondary">+99</div>
+
+        </NavLink></li>
     </>
+    const handelLogout = () => {
+        logOut()
+            .then(() => {
+                // Sign-out successful.
+            }).catch((error) => {
+                console.log(error.message)
+            });
+
+    }
     return (
-        <div className=''>
-            <div className="navbar fixed z-30  bg-opacity-30 bg-slate-400 container mx-auto">
+        <div>
+            <div className="navbar fixed z-30  bg-opacity-60 bg-slate-600 container mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -28,11 +46,14 @@ const Nvaber = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Button</a>
+                    {
+                        user ? <button onClick={handelLogout} className="btn">Logout</button> : <NavLink to="/login" className="btn ">Login</NavLink>
+
+                    }
                 </div>
             </div>
         </div>
     );
 };
 
-export default Nvaber;
+export default Navber;

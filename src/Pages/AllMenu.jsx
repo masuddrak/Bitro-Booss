@@ -10,7 +10,6 @@ import useMenu from "../hooks/useMenu";
 import SectionTitel from "../componets/SectionTitel";
 const AllMenu = () => {
     const [menus, loading] = useMenu()
-    console.log(menus)
     const soup = menus.filter(item => item.category === "soup")
     const pizza = menus.filter(item => item.category === "pizza")
     const salad = menus.filter(item => item.category === "salad")
