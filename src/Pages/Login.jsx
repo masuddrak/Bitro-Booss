@@ -1,18 +1,17 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext} from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from '../Provider/AuthProvider';
 const Login = () => {
     const { loginUser } = useContext(AuthContext)
-    const [disabled, setDisabled] = useState(true)
+    // const [disabled, setDisabled] = useState(true)
     
     const location=useLocation()
     const naviget=useNavigate()
     const from=location.state?.from.pathname || "/"
     console.log(location)
-    useEffect(() => {
-        loadCaptchaEnginge(6);
-    }, [])
+    // useEffect(() => {
+    //     loadCaptchaEnginge(6);
+    // }, [])
     const handelForm = (e) => {
         e.preventDefault()
         const form = e.target
@@ -26,13 +25,13 @@ const Login = () => {
                 console.log(error.message)
             })
     }
-    const handelCaptchaValue = (e) => {
-        const currentCaptchaValue = e.target.value
-        if (validateCaptcha(currentCaptchaValue)) {
-            setDisabled(false)
-        }
-        console.log(currentCaptchaValue)
-    }
+    // const handelCaptchaValue = (e) => {
+    //     const currentCaptchaValue = e.target.value
+    //     if (validateCaptcha(currentCaptchaValue)) {
+    //         setDisabled(false)
+    //     }
+    //     console.log(currentCaptchaValue)
+    // }
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row-reverse">
@@ -54,14 +53,14 @@ const Login = () => {
                             </label>
                             <input type="password" name="password" placeholder="password" className="input input-bordered" required />
                         </div>
-                        <div className="form-control">
+                        {/* <div className="form-control">
                             <label className="label">
                                 <LoadCanvasTemplate />
                             </label>
                             <input type="text" onBlur={handelCaptchaValue} name="captch" placeholder="Type Captch Code" className="input input-bordered" required />
-                        </div>
+                        </div> */}
                         <div className="form-control mt-6">
-                            <button disabled={disabled} className="btn btn-primary">Login</button>
+                            <button  className="btn btn-primary">Login</button>
                         </div>
                     </form>
                     <p className='m-3'>Are You New Bistro Boss? <Link to="/register">Register</Link></p>

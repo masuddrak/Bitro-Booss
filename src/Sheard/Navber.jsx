@@ -2,9 +2,15 @@ import { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
 import { FaShoppingCart } from "react-icons/fa";
+import useCart from '../hooks/useCart';
 
 const Navber = () => {
     const { user, logOut } = useContext(AuthContext)
+    const {carts,isPending}=useCart()
+    if(isPending){
+        return <h1 className='text-4xl'>Loading........</h1>
+    }
+    console.log(carts)
     const navoptions = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/menu">Menu</NavLink></li>
@@ -13,7 +19,7 @@ const Navber = () => {
 
         <li><NavLink to="/card">
             <FaShoppingCart></FaShoppingCart>
-            <div className="badge badge-secondary">+99</div>
+            <div className="badge badge-secondary">+{carts.length}</div>
 
         </NavLink></li>
     </>
