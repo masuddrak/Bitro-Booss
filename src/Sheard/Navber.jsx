@@ -17,7 +17,7 @@ const Navber = () => {
         <li><NavLink to="/orders/soup">Orders</NavLink></li>
         <li><NavLink to="/about">About</NavLink></li>
 
-        <li><NavLink to="/card">
+        <li><NavLink to="/dashbord">
             <FaShoppingCart></FaShoppingCart>
             <div className="badge badge-secondary">+{carts.length}</div>
 
