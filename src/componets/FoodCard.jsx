@@ -10,6 +10,7 @@ const FoodCard = ({ item }) => {
     const { image, price, name, recipe, _id } = item
     const naviget = useNavigate()
     const location = useLocation()
+    console.log(location)
     const AxiosSecure=useAxiosSecure()
     const {refetch}=useCart()
     
