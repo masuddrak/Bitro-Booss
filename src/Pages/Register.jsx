@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import { uploadImage } from "../utils/Api";
 import useAxiosCommon from "../hooks/useAxiosCommon";
+import SocialLogin from "../componets/SocialLogin";
 
 const Register = () => {
     const { createUser, updateUserProfile, setLoading, loading } = useContext(AuthContext)
@@ -88,6 +89,7 @@ const Register = () => {
                     <div>
                         <p className="m-3">Have a Already an account? <Link to="/login">Login</Link></p>
                     </div>
+                    <SocialLogin></SocialLogin>
                 </div>
             </div>
         </div>

@@ -13,6 +13,7 @@ import Dashbord from "../Layout/Dashbord";
 import UserHome from "../Pages/Dashbord/UserHome"
 import Reservation from "../Pages/Dashbord/Reservation"
 import MyCart from "../Pages/Dashbord/MyCart";
+import AllUsers from "../Pages/Dashbord/AllUsers";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -47,21 +48,26 @@ export const router = createBrowserRouter([
         ]
     },
     {
-        path: "/dashbord",
+        path: "/dashboard",
         element: <Dashbord></Dashbord>,
         children: [
             {
-                path: "/dashbord",
+                path: "/dashboard",
                 element: <UserHome></UserHome>
             },
             {
-                path: "/dashbord/reservation",
+                path: "/dashboard/reservation",
                 element: <Reservation></Reservation>
             },
             {
-                path: "/dashbord/mycarts",
+                path: "/dashboard/mycarts",
                 element: <MyCart></MyCart>
             },
+            // admin user
+            {
+                path:"/dashboard/allUsers",
+                element:<AllUsers></AllUsers>
+            }
         ]
     }
 ]);

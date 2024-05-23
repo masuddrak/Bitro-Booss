@@ -17,10 +17,9 @@ const Navber = () => {
         <li><NavLink to="/orders/soup">Orders</NavLink></li>
         <li><NavLink to="/about">About</NavLink></li>
 
-        <li><NavLink to="/dashbord">
+        <li><NavLink to="/dashboard">
             <FaShoppingCart></FaShoppingCart>
             <div className="badge badge-secondary">+{carts.length}</div>
-
         </NavLink></li>
     </>
     const handelLogout = () => {
