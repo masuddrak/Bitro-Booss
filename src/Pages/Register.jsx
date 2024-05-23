@@ -15,6 +15,9 @@ const Register = () => {
         handleSubmit,
         formState: { errors },
     } = useForm()
+    if (loading) {
+        return <h1>Loading....register.......</h1>
+    }
     const onSubmit = async (data) => {
         try {
             setLoading(true)
@@ -43,9 +46,7 @@ const Register = () => {
             setLoading(false)
         }
     }
-    if (loading) {
-        return <h1>Loading...........</h1>
-    }
+   
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row-reverse">

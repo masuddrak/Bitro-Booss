@@ -14,6 +14,7 @@ import UserHome from "../Pages/Dashbord/UserHome"
 import Reservation from "../Pages/Dashbord/Reservation"
 import MyCart from "../Pages/Dashbord/MyCart";
 import AllUsers from "../Pages/Dashbord/AllUsers";
+import PrivetRoute from "./PrivetRoute";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -34,7 +35,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/orders/:category",
-                element: <Orders></Orders>
+                element: <PrivetRoute><Orders></Orders></PrivetRoute>
             },
             {
                 path: "/login",
@@ -49,7 +50,7 @@ export const router = createBrowserRouter([
     },
     {
         path: "/dashboard",
-        element: <Dashbord></Dashbord>,
+        element: <PrivetRoute><Dashbord></Dashbord></PrivetRoute>,
         children: [
             {
                 path: "/dashboard",

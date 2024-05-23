@@ -1,11 +1,14 @@
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../hooks/useAuth";
 import useAxiosCommon from "../hooks/useAxiosCommon";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SocialLogin = () => {
     const axiosCommon = useAxiosCommon()
     const { handelGoolesign } = useAuth()
-
+const naviget=useNavigate()
+const location=useLocation()
+const from=location.state?.from.pathname || "/"
     const submitSignIn = async () => {
         await handelGoolesign()
             .then(async (result) => {
@@ -21,6 +24,7 @@ const SocialLogin = () => {
                 } catch (error) {
                     console.log(error.message)
                 }
+                naviget(from)
             })
     }
     return (
