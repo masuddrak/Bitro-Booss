@@ -5,17 +5,23 @@ import { LiaUtensilsSolid } from "react-icons/lia";
 import { FaListUl } from "react-icons/fa";
 import { FaBook } from "react-icons/fa";
 import { PiUsersThreeFill } from "react-icons/pi";
+import useAdmin from "../hooks/useAdmin";
 
 
 const Dashbord = () => {
     const { carts } = useCart()
-    const isAdmin = true
+    const [isAdmin,isPending]=useAdmin()
+    if(isPending){
+        return <h1 className="text-4xl">Loading...........</h1>
+    }
+    
+    const checkAdmin = isAdmin
     return (
         <div className="flex container mx-auto">
             <div className="min-h-screen bg-orange-300 w-1/5 p-4">
                 <ul className="space-y-3 uppercase">
                     {
-                        isAdmin ? <>
+                        checkAdmin ? <>
                             <li ><NavLink className="flex gap-2 items-center" to="/dashboard/adminHome"><FaHome></FaHome> Admin Home</NavLink></li>
                             <li><NavLink className="flex gap-2 items-center" to="/dashboard/addItems"><LiaUtensilsSolid></LiaUtensilsSolid> Add item</NavLink></li>
                             <li><NavLink className="flex gap-2 items-center"  to="/dashboard/manageItem"><FaListUl></FaListUl> Manage item</NavLink></li>

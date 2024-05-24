@@ -10,7 +10,7 @@ const useAxiosSecure = () => {
     const naviget = useNavigate()
     AxiosSecure.interceptors.request.use(function (config) {
         // Do something before request is sent
-        console.log("hite interceptor now")
+        // console.log("hite interceptor now")
         const token = localStorage.getItem("access_token")
         config.headers.authorization = `Bearer ${token}`
         return config;

@@ -15,6 +15,8 @@ import Reservation from "../Pages/Dashbord/Reservation"
 import MyCart from "../Pages/Dashbord/MyCart";
 import AllUsers from "../Pages/Dashbord/AllUsers";
 import PrivetRoute from "./PrivetRoute";
+import AdminRoute from "./AdminRoute";
+import AddItem from "../Pages/Dashbord/AddItem";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -64,10 +66,14 @@ export const router = createBrowserRouter([
                 path: "/dashboard/mycarts",
                 element: <MyCart></MyCart>
             },
-            // admin user
+            // admin user routes
             {
                 path:"/dashboard/allUsers",
-                element:<AllUsers></AllUsers>
+                element:<AdminRoute><AllUsers></AllUsers></AdminRoute>
+            },
+            {
+                path:"/dashboard/addItems",
+                element:<AdminRoute><AddItem></AddItem></AdminRoute>
             }
         ]
     }
