@@ -17,6 +17,9 @@ import AllUsers from "../Pages/Dashbord/AllUsers";
 import PrivetRoute from "./PrivetRoute";
 import AdminRoute from "./AdminRoute";
 import AddItem from "../Pages/Dashbord/AddItem";
+import ManageItems from "../Pages/Dashbord/ManageItems";
+import UpdateItem from "../Pages/Dashbord/UpdateItem";
+import axios from "axios";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -74,7 +77,16 @@ export const router = createBrowserRouter([
             {
                 path:"/dashboard/addItems",
                 element:<AdminRoute><AddItem></AddItem></AdminRoute>
-            }
+            },
+            {
+                path:"/dashboard/manageItems",
+                element:<AdminRoute><ManageItems></ManageItems></AdminRoute>
+            },
+            {
+                path:"/dashboard/updateItem/:id",
+                element:<AdminRoute><UpdateItem></UpdateItem></AdminRoute>,
+                loader:({params})=>axios(`http://localhost:5000/menu/${params.id}`)
+            },
         ]
     }
 ]);

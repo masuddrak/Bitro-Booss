@@ -24,7 +24,7 @@ const Dashbord = () => {
                         checkAdmin ? <>
                             <li ><NavLink className="flex gap-2 items-center" to="/dashboard/adminHome"><FaHome></FaHome> Admin Home</NavLink></li>
                             <li><NavLink className="flex gap-2 items-center" to="/dashboard/addItems"><LiaUtensilsSolid></LiaUtensilsSolid> Add item</NavLink></li>
-                            <li><NavLink className="flex gap-2 items-center"  to="/dashboard/manageItem"><FaListUl></FaListUl> Manage item</NavLink></li>
+                            <li><NavLink className="flex gap-2 items-center"  to="/dashboard/manageItems"><FaListUl></FaListUl> Manage item</NavLink></li>
                             <li><NavLink className="flex gap-2 items-center"  to="/dashboard/manageBooking"><FaBook></FaBook> Manage booking</NavLink></li>
 
                             <li><NavLink className="flex gap-2 items-center"  to="/dashboard/allUsers"><PiUsersThreeFill></PiUsersThreeFill>all users</NavLink></li>
