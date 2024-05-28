@@ -30,7 +30,7 @@ const Dashbord = () => {
                             <li><NavLink className="flex gap-2 items-center"  to="/dashboard/allUsers"><PiUsersThreeFill></PiUsersThreeFill>all users</NavLink></li>
                         </> :
                             <>
-                                <li ><NavLink className="flex gap-2 items-center" to="/dashboard"><FaHome></FaHome> User Home</NavLink></li>
+                                <li ><NavLink className="flex gap-2 items-center" to="/dashboard/userHome"><FaHome></FaHome> User Home</NavLink></li>
                                 <li><NavLink className="flex gap-2 items-center" to="/dashboard/reservation"><FaHome></FaHome> Resevation</NavLink></li>
                                 <li><NavLink to="/dashboard/paymentHistory" className="flex gap-2 items-center"><FaHome></FaHome> Payment Histroy</NavLink></li>
                                 <li><NavLink className="flex gap-2 items-center" to="/dashboard/mycarts"><FaHome></FaHome> My Cart ({carts.length})</NavLink></li>

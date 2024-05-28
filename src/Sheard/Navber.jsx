@@ -3,9 +3,11 @@ import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
 import { FaShoppingCart } from "react-icons/fa";
 import useCart from '../hooks/useCart';
+import useAdmin from '../hooks/useAdmin';
 
 const Navber = () => {
     const { user, logOut } = useContext(AuthContext)
+    const [isAdmin]=useAdmin()
     const { carts, isPending } = useCart()
     // if (isPending) {
     //     return <h1 className='text-4xl'>Loading........</h1>
@@ -21,6 +23,12 @@ const Navber = () => {
             <FaShoppingCart></FaShoppingCart>
             <div className="badge badge-secondary">+{carts.length}</div>
         </NavLink></li>
+    {
+        user && isAdmin && <li><NavLink to="/dashboard/adminHome">Dashbord</NavLink></li>
+    }
+    {
+        user && !isAdmin && <li><NavLink to="/dashboard/userHome">Dashbord</NavLink></li>
+    }
     </>
     const handelLogout = () => {
         logOut()

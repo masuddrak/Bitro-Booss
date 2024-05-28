@@ -22,6 +22,7 @@ import UpdateItem from "../Pages/Dashbord/UpdateItem";
 import axios from "axios";
 import Payment from "../Pages/Dashbord/Payment";
 import PaymentHistory from "../Pages/Dashbord/PaymentHistory";
+import AdminHome from "../Pages/Dashbord/AdminHome";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -60,7 +61,7 @@ export const router = createBrowserRouter([
         element: <PrivetRoute><Dashbord></Dashbord></PrivetRoute>,
         children: [
             {
-                path: "/dashboard",
+                path: "/dashboard/userHome",
                 element: <UserHome></UserHome>
             },
             {
@@ -83,6 +84,10 @@ export const router = createBrowserRouter([
             {
                 path:"/dashboard/allUsers",
                 element:<AdminRoute><AllUsers></AllUsers></AdminRoute>
+            },
+            {
+                path:"/dashboard/adminHome",
+                element:<AdminRoute><AdminHome></AdminHome></AdminRoute>
             },
             {
                 path:"/dashboard/addItems",
