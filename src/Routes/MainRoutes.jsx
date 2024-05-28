@@ -20,6 +20,7 @@ import AddItem from "../Pages/Dashbord/AddItem";
 import ManageItems from "../Pages/Dashbord/ManageItems";
 import UpdateItem from "../Pages/Dashbord/UpdateItem";
 import axios from "axios";
+import Payment from "../Pages/Dashbord/Payment";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -68,6 +69,10 @@ export const router = createBrowserRouter([
             {
                 path: "/dashboard/mycarts",
                 element: <MyCart></MyCart>
+            },
+            {
+                path: "/dashboard/payment",
+                element: <Payment></Payment>
             },
             // admin user routes
             {
