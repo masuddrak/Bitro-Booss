@@ -7,9 +7,9 @@ import useCart from '../hooks/useCart';
 const Navber = () => {
     const { user, logOut } = useContext(AuthContext)
     const { carts, isPending } = useCart()
-    if (isPending) {
-        return <h1 className='text-4xl'>Loading........</h1>
-    }
+    // if (isPending) {
+    //     return <h1 className='text-4xl'>Loading........</h1>
+    // }
     console.log(carts)
     const navoptions = <>
         <li><NavLink to="/">Home</NavLink></li>

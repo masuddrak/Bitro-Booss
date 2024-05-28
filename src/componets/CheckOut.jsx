@@ -7,22 +7,27 @@ import { useEffect, useState } from 'react';
 import useCart from '../hooks/useCart';
 import useAxiosSecure from '../hooks/useAxiosSecure';
 import useAuth from '../hooks/useAuth';
+import Swal from 'sweetalert2';
 
 const CheckOut = () => {
     const stripe = useStripe();
     const elements = useElements();
-const {user}=useAuth()
+    const { user } = useAuth()
     const [errorMessage, setErrorMessage] = useState("");
     const [clientSecret, setClientSecret] = useState("");
+    const [transactionID, setTransactionID] = useState("")
     const AxiosSecure = useAxiosSecure()
-    const { carts } = useCart()
+    const { carts,refetch } = useCart()
     const totalPrice = carts.reduce((accumulator, currentValue) => accumulator + currentValue.price, 0)
     useEffect(() => {
-        AxiosSecure.post("/create-payment-intent", { price: totalPrice })
-            .then(res => {
-                console.log(res.data.clientSecret)
-                setClientSecret(res.data.clientSecret)
-            })
+        if (totalPrice > 0) {
+            AxiosSecure.post("/create-payment-intent", { price: totalPrice })
+                .then(res => {
+                    console.log(res.data.clientSecret)
+                    setClientSecret(res.data.clientSecret)
+                })
+        }
+
     }, [AxiosSecure, totalPrice]);
 
     // handel form
@@ -66,7 +71,29 @@ const {user}=useAuth()
             // Handle error here
         } else if (paymentIntent && paymentIntent.status === 'succeeded') {
             // Handle successful payment here
-            console.log(paymentIntent)
+            setTransactionID(paymentIntent.id)
+            // save database Payment Histry
+            const payment = {
+                email: user?.email,
+                price: totalPrice,
+                date: new Date(),
+                transactionID: paymentIntent.id,
+                cardIds: carts.map(item => item._id),
+                menuIds: carts.map(item => item.itemId),
+                status: "pending"
+            }
+            const res = await AxiosSecure.post("/payment", payment)
+
+            if(res.data?.paymentResult?.acknowledged){
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Your Payment Successfull!!",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+            }
+            refetch()
         }
     };
     return (
@@ -93,6 +120,7 @@ const {user}=useAuth()
                     Checkout
                 </button>
                 <p className='text-red-500'>{errorMessage}</p>
+                <p className='text-green-600'>{transactionID}</p>
             </form>
         </div>
     );
