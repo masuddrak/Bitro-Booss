@@ -18,7 +18,7 @@ const CheckOut = () => {
     const [transactionID, setTransactionID] = useState("")
     const AxiosSecure = useAxiosSecure()
     const { carts,refetch } = useCart()
-    const totalPrice = carts.reduce((accumulator, currentValue) => accumulator + currentValue.price, 0)
+    const totalPrice = carts.reduce((accumulator, currentValue) => accumulator + parseFloat(currentValue.price), 0)
     useEffect(() => {
         if (totalPrice > 0) {
             AxiosSecure.post("/create-payment-intent", { price: totalPrice })
@@ -96,6 +96,7 @@ const CheckOut = () => {
             refetch()
         }
     };
+    console.log(clientSecret)
     return (
         <div>
             <form onSubmit={handleSubmit}>

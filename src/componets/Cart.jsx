@@ -5,9 +5,10 @@ import useAxiosSecure from "../hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
 
 const Cart = () => {
-    const { carts, refetch } = useCart()
+    const { carts,refetch } = useCart()
     const AxiosSecure = useAxiosSecure()
-    const totalPrice = carts.reduce((total, item) => total + item.price, 0)
+    const totalPrice = carts.reduce((total, item) => total + parseFloat(item.price), 0)
+
     const handelDeleteItem = (id) => {
         Swal.fire({
             title: "Are you sure?",
